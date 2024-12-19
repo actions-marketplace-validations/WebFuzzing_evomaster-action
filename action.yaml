@@ -9,7 +9,7 @@ inputs:
     required: true
 runs:
   using: "docker"
-  image: "webfuzzing/evomaster:latest"
+  image: "docker://webfuzzing/evomaster:latest"
   entrypoint: "/bin/sh -c"
   args:
       - >
