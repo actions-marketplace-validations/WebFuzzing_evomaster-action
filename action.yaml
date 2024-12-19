@@ -10,7 +10,7 @@ inputs:
 runs:
   using: "docker"
   image: "webfuzzing/evomaster:latest"
-  entrypoint: [ "/bin/sh", "-c" ]
+  entrypoint: "/bin/sh -c"
   args:
       - >
         docker run --rm
