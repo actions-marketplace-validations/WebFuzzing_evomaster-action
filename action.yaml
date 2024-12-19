@@ -4,9 +4,6 @@ inputs:
   args:
     description: "Arguments to pass to EvoMaster. Same as when running it on a command-line."
     required: true
-#  output-dir:
-#    description: "Directory on the host to store the generated output files, e.g., the test suites."
-#    required: true
 
 
 runs:
@@ -27,14 +24,3 @@ runs:
     - name: Run EvoMaster
       run: java -jar evomaster.jar ${{ inputs.args }}
       shell: bash
-
-#runs:
-#  using: "docker"
-#  image: "docker://webfuzzing/evomaster:latest"
-#  entrypoint: "/bin/sh -c"
-#  args:
-#      - >
-#        docker run --rm
-#        -v ${{ inputs.output-dir }}:/generated_tests
-#        webfuzzing/evomaster:latest
-#        ${{ inputs.args }}
