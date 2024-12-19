@@ -1,4 +1,4 @@
-name: "EvoMaster"
+name: "EvoMaster Action"
 description: "Fuzz Testing Web APIs with EvoMaster on GitHub Action"
 inputs:
   args:
