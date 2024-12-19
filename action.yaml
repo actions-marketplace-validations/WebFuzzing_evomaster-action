@@ -2,18 +2,36 @@ name: "EvoMaster Action"
 description: "Fuzz Testing Web APIs with EvoMaster on GitHub Action"
 inputs:
   args:
-    description: "Arguments to pass EvoMaster, same as when running it on a command-line."
+    description: "Arguments to pass to EvoMaster. Same as when running it on a command-line."
     required: true
-  output-dir:
-    description: "Directory on the host to store the generated output files, like test suites."
-    required: true
+#  output-dir:
+#    description: "Directory on the host to store the generated output files, e.g., the test suites."
+#    required: true
+
+
 runs:
-  using: "docker"
-  image: "docker://webfuzzing/evomaster:latest"
-  entrypoint: "/bin/sh -c"
-  args:
-      - >
-        docker run --rm
-        -v ${{ inputs.output-dir }}:/generated_tests
-        webfuzzing/evomaster:latest
-        ${{ inputs.args }}
+  using: "composite"
+  steps:
+
+    - name: Setup JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: 21
+
+    - name: Download EvoMaster JAR using GitHub CLI
+      run: gh release download  --repo webfuzzing/evomaster --pattern "evomaster.jar"
+      shell: bash
+
+    - name: Run EvoMaster
+      run: java -jar evomaster.jar ${{ inputs.args }}
+
+#runs:
+#  using: "docker"
+#  image: "docker://webfuzzing/evomaster:latest"
+#  entrypoint: "/bin/sh -c"
+#  args:
+#      - >
+#        docker run --rm
+#        -v ${{ inputs.output-dir }}:/generated_tests
+#        webfuzzing/evomaster:latest
+#        ${{ inputs.args }}
