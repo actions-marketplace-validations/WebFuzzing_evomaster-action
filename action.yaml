@@ -1,0 +1,19 @@
+name: "EvoMaster GitHub Action"
+description: "Fuzz Testing Web APIs with EvoMaster on GitHub Action"
+inputs:
+  args:
+    description: "Arguments to pass EvoMaster, same as when running it on a command-line."
+    required: true
+  output-dir:
+    description: "Directory on the host to store the generated output files, like test suites."
+    required: true
+runs:
+  using: "docker"
+  image: "webfuzzing/evomaster:latest"
+  entrypoint: [ "/bin/sh", "-c" ]
+  args:
+      - >
+        docker run --rm
+        -v ${{ inputs.output-dir }}:/generated_tests
+        webfuzzing/evomaster:latest
+        ${{ inputs.args }}
