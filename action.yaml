@@ -24,6 +24,7 @@ runs:
 
     - name: Run EvoMaster
       run: java -jar evomaster.jar ${{ inputs.args }}
+      shell: bash
 
 #runs:
 #  using: "docker"
