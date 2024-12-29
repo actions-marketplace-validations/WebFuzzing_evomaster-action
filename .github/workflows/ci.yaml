@@ -16,4 +16,4 @@ jobs:
         uses: ./  # Refers to this custom action
         with:
            args: "--help"
-           failOnErrors: true
+           failOnErrors: "true"
