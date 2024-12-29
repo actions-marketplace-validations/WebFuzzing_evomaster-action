@@ -12,19 +12,29 @@ try {
     if(faults == 0) {
         core.summary.addHeading('No potential fault was found', '2')
     } else {
-        core.error("TODO error message")
+
+        let message;
 
         if(faults == 1){
-            core.summary.addHeading('1 potential fault was found', '2')
+            message = 'EvoMaster found 1 potential fault in the tested application'
         } else {
-            core.summary.addHeading("" + faults + ' potential faults were found', '2')
+            message ="EvoMaster found " + faults + ' potential faults in the tested application'
         }
 
+        core.summary.addHeading(message, '2')
+
         // const failOnErrors = core.getBooleanInput("failOnErrors")
-        // if(failOnErrors){
-        //     core.setFailed("PROBLEMS FIXME");
-        // }
+        const failOnErrors = process.env.FAIL_ON_ERRORS
+        if(failOnErrors.toLowerCase() === "true"){
+            core.error(message)
+            core.setFailed(message);
+        } else if(failOnErrors.toLowerCase() === "false"){
+            core.warning(message)
+        } else {
+            core.setFailed("Invalid 'failOnErrors' value: '" + failOnErrors + "'. Use either 'true' or 'false'");
+        }
     }
+    core.summary.write()
 
 } catch (error) {
     core.setFailed(error.message);
