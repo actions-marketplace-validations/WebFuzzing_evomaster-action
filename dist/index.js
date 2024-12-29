@@ -31844,10 +31844,8 @@ try {
 
         core.summary.addHeading(message, '2')
 
-        // const failOnErrors = core.getBooleanInput("failOnErrors")
         const failOnErrors = process.env.FAIL_ON_ERRORS
         if(failOnErrors.toLowerCase() === "true"){
-            core.error(message)
             core.setFailed(message);
         } else if(failOnErrors.toLowerCase() === "false"){
             core.warning(message)
