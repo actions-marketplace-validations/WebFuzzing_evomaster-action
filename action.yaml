@@ -4,6 +4,9 @@ inputs:
   args:
     description: "Arguments to pass to EvoMaster. Same as when running it on a command-line."
     required: true
+  failOnErrors:
+    description: "Fail the action if any issue was found in the System Under Test"
+    default: 'false'
 
 
 runs:
@@ -15,12 +18,26 @@ runs:
       with:
         java-version: 21
 
-    - name: Download EvoMaster JAR using GitHub CLI
-      run: gh release download  --repo webfuzzing/evomaster --pattern "evomaster.jar"
+# TODO put back
+#    - name: Download EvoMaster JAR using GitHub CLI
+#      run: gh release download  --repo webfuzzing/evomaster --pattern "evomaster.jar"
+#      shell: bash
+#      env:
+#        GH_TOKEN: ${{ github.token }}
+#
+#    - name: Run EvoMaster
+#      run: java -jar evomaster.jar ${{ inputs.args }}
+#      shell: bash
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Analyze Results
+      run: node "$GITHUB_ACTION_PATH"/dist/index.js
       shell: bash
       env:
-        GH_TOKEN: ${{ github.token }}
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
 
-    - name: Run EvoMaster
-      run: java -jar evomaster.jar ${{ inputs.args }}
-      shell: bash
+

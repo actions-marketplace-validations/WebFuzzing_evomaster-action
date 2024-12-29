@@ -1,0 +1,25 @@
+{
+  "name": "evomaster-action",
+  "version": "1.0.0",
+  "description": "GitHub Action for running EvoMaster",
+  "main": "index.js",
+  "scripts": {
+    "getNCC": "npm i -g @vercel/ncc",
+    "build": "ncc build index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebFuzzing/evomaster-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WebFuzzing/evomaster-action/issues"
+  },
+  "homepage": "https://github.com/WebFuzzing/evomaster-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0"
+  }
+}
