@@ -31841,10 +31841,10 @@ try {
             core.summary.addHeading("" + faults + ' potential faults were found', '2')
         }
 
-        const failOnErrors = core.getBooleanInput("failOnErrors")
-        if(failOnErrors){
-            core.setFailed("PROBLEMS FIXME");
-        }
+        // const failOnErrors = core.getBooleanInput("failOnErrors")
+        // if(failOnErrors){
+        //     core.setFailed("PROBLEMS FIXME");
+        // }
     }
 
 } catch (error) {
