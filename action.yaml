@@ -18,16 +18,15 @@ runs:
       with:
         java-version: 21
 
-# TODO put back
-#    - name: Download EvoMaster JAR using GitHub CLI
-#      run: gh release download  --repo webfuzzing/evomaster --pattern "evomaster.jar"
-#      shell: bash
-#      env:
-#        GH_TOKEN: ${{ github.token }}
-#
-#    - name: Run EvoMaster
-#      run: java -jar evomaster.jar ${{ inputs.args }}
-#      shell: bash
+    - name: Download EvoMaster JAR using GitHub CLI
+      run: gh release download  --repo webfuzzing/evomaster --pattern "evomaster.jar"
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+
+    - name: Run EvoMaster
+      run: java -jar evomaster.jar ${{ inputs.args }}
+      shell: bash
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
