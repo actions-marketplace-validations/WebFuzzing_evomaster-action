@@ -6,7 +6,7 @@ inputs:
     required: true
   failOnErrors:
     description: "Fail the action if any issue was found in the System Under Test"
-    default: 'false'
+    required: true
 
 
 runs:
