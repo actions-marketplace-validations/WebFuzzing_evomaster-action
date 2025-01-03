@@ -31826,7 +31826,7 @@ const { readFileSync } = __nccwpck_require__(3024);
 try {
     core.info("Analyzing results of EvoMaster run")
 
-    const report = JSON.parse(readFileSync('report.json', 'utf8'));
+    const report = JSON.parse(readFileSync('./generated_tests/report.json', 'utf8'));
 
     const faults = report.faults.total_number
 
