@@ -1,6 +1,9 @@
-# evomaster-action
-GitHub Action for running EvoMaster
+# EvoMaster GitHub Action
 
-WARNING: this is work in progress. Do not use yet
+This is a GitHub Action for running EvoMaster as part of CI. 
 
-## TODO Documentation under construction
+DOCUMENTATION UNDER CONSTRUCTION
+
+
+
+
