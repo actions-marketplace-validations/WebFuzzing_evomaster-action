@@ -20,7 +20,6 @@ Example of configuration:
 - uses: webfuzzing/evomaster-action@v1
   with:
     args: >- 
-         --writeWFCReport true
          --blackBox true  
          --bbSwaggerUrl http://localhost:8080/v3/api-docs
          --maxTime 20s
@@ -61,8 +60,6 @@ At the moment, this action has 2 options:
 * __args__: command-line arguments given to _EvoMaster_. These are exactly the same you would use when running _EvoMaster_ on your local machine. 
 
 In this example, we used the arguments:
-
-* _--writeWFCReport true_: this is essential to analyze the results of _EvoMaster_ (e.g., to fail the build if any fault is found). Future versions of _EvoMaster_ might have this option on by default, but still specifying it manually here does not harm
 
 * _--blackBox true_: specifying we are doing _black_box_ testing. for historical reasons, default testing mode in _EvoMaster_ is _white-box_.
  
