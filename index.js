@@ -7,7 +7,7 @@ try {
 
     const report = JSON.parse(readFileSync('./generated_tests/report.json', 'utf8'));
 
-    const faults = report.faults.total_number
+    const faults = report.faults.totalNumber
 
     if(faults == 0) {
         core.summary.addHeading('No potential fault was found', '2')
