@@ -76,5 +76,8 @@ At the time of writing, this is a first version of this new GitHub Action.
 Several new features will be added in the next coming months. 
 If there is any important feature you think it is missing, please let us know by creating a new post on the [Discussions page](https://github.com/WebFuzzing/evomaster-action/discussions).
 
+## For Developers
 
+To test this action, this repository itself is configured to use the action on itself (see [ci.yaml](.github/workflows/ci.yaml)). 
+_EvoMaster_ is run in `--help` mode (so there is no need to have any actual API to test), where an example [report.json](generated_tests/report.json) file is already added to the repository for testing. 
 
